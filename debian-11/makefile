@@ -1,7 +1,9 @@
 all: install_nginx setup_firewall setup_website setup_cert end
 
 create_user:
-	adduser --disabled-password --gecos "" dev
+	adduser dev
+
+user_setup:
 	usermod -aG sudo dev
 	getent group sudo
 	cp -rf ~/.ssh /home/dev

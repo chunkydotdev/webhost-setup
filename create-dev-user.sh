@@ -11,5 +11,6 @@ cd debian-11
 echo "done"
 echo "creating user 'dev'..."
 make create_user
+make user_setup
 rm -rf debian-11
-logout
+su dev
