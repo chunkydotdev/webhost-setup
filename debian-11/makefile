@@ -19,18 +19,14 @@ setup_website:
 	sudo chmod -R 755 /var/www/$(domain); \
 	sudo cp domain.conf /etc/nginx/sites-available/$(domain); \
 	sudo sed -i "s/domain/$(domain)/g" /etc/nginx/sites-available/$(domain); \
-	sudo ln -s /etc/nginx/sites-available/$(domain) /etc/nginx/sites-enabled/;
+	sudo ln -s /etc/nginx/sites-available/$(domain) /etc/nginx/sites-enabled;
 	sudo cp nginx.conf /etc/nginx/nginx.conf
 	sudo nginx -t
 	sudo systemctl restart nginx
 
 setup_cert:
 	sudo apt install snapd -y
-	sudo snap install core -y
-	sudo snap install --classic certbot -y
+	sudo snap install core
+	sudo snap install --classic certbot
 	sudo ln -s /snap/bin/certbot /usr/bin/certbot
-	sudo certbot --nginx --register-unsafely-without-email
-
-end:
-	echo "Your ssh capabilities have been copied to user 'dev'"
-	echo "For further changes, sign out of $USER and sign in with 'dev'"
+	echo "Y" | sudo certbot --nginx --register-unsafely-without-email -d $(domain),www.$(domain)
