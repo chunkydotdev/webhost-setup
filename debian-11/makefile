@@ -3,8 +3,9 @@ create_user:
 	adduser dev
 	usermod -aG sudo dev
 	getent group sudo
-	cp -rf ~/.ssh ../home/dev
-	chown -R dev:dev ../home/dev/.ssh
+	mkdir /home/dev
+	cp -rf ~/.ssh /home/dev
+	chown -R dev:dev /home/dev/.ssh
 
 install_nginx:
 	sudo apt update 

@@ -3,10 +3,10 @@
 
 echo "updating apt"
 sudo apt update
-sudo apt install subversion -y
+sudo apt install subversion make -y
 
 echo "downloading webhost repo..."
-svn checkout https://github.com/Storken/webhost/trunk/debian-11
+svn export https://github.com/Storken/webhost-setup.git/trunk/debian-11
 cd debian-11
 echo "done"
 echo "starting make script"
