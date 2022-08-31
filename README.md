@@ -3,10 +3,10 @@ This setup assumes you're using the server through ssh
 
 ## Debian 11, Ubuntu 22, Ubuntu 20
 For a new server go through the following steps:
-    1. Create a user, the scripts are made for a 'dev' user, unless a certain reason i suggest just going along with that
-    2. Once the dev user is created, sign out of root and ssh back in with the dev user (`ssh dev@IP-ADDRESS`)
-    3. Set up nginx for hosting your websites
-    4. Add a domain
+1. Create a user, the scripts are made for a 'dev' user, unless a certain reason i suggest just going along with that
+2. Once the dev user is created, sign out of root and ssh back in with the dev user (`ssh dev@IP-ADDRESS`)
+3. Set up nginx for hosting your websites
+4. Add a domain
 
 
 ### Create a dev user
