@@ -16,12 +16,12 @@ setup_firewall:
 	sudo ufw app list
 	sudo ufw allow 'Nginx FULL'
 	sudo ufw allow 'OpenSSH'
-	sudo ufw enable
+	sudo ufw enable -y
 	sudo systemctl start nginx
 	sudo systemctl enable nginx
 
 setup_website:
-	@read -p "Enter domain without http/https: " domain; \
+	read -p "Enter domain without http/https: " domain; \
 	sudo mkdir -p /var/www/$$domain/html; \
 	sudo chown -R ${USER}:${USER} /var/www/$$domain/html; \
 	sudo chmod -R 755 /var/www/$$domain; \
