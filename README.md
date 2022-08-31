@@ -18,4 +18,6 @@ chown -R dev:dev /home/dev/.ssh
 ```
 
 ### Set up nginx and a domain
-`curl -s -L https://raw.githubusercontent.com/Storken/webhost-setup/main/install.sh | bash`
+```sh
+curl -s -L https://raw.githubusercontent.com/Storken/webhost-setup/main/install.sh | bash
+```
