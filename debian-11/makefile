@@ -9,7 +9,7 @@ setup_firewall:
 	sudo ufw app list
 	sudo ufw allow 'Nginx FULL'
 	sudo ufw allow 'OpenSSH'
-	sudo ufw enable -y
+	echo "y" | sudo ufw enable
 	sudo systemctl start nginx
 	sudo systemctl enable nginx
 
