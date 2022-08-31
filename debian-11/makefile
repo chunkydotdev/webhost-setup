@@ -1,14 +1,5 @@
 all: install_nginx setup_firewall setup_website setup_cert end
 
-create_user:
-	adduser dev
-
-user_setup:
-	usermod -aG sudo dev
-	getent group sudo
-	cp -rf ~/.ssh /home/dev
-	chown -R dev:dev /home/dev/.ssh
-
 install_nginx:
 	sudo apt update 
 	sudo apt install nginx -y
