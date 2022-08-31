@@ -3,7 +3,7 @@
 
 echo "updating apt"
 sudo apt update
-sudo apt install svn -y
+sudo apt install subversion -y
 
 echo "downloading webhost repo..."
 svn checkout https://github.com/Storken/webhost/trunk/debian-11
