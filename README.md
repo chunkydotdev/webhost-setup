@@ -26,3 +26,5 @@ curl -s -L https://raw.githubusercontent.com/Storken/webhost-setup/main/install.
 ```sh
 curl -s -L https://raw.githubusercontent.com/Storken/webhost-setup/main/add-domain.sh -o add-domain.sh && bash add-domain.sh && rm add-domain.sh
 ```
+
+After this you can add your website files in `/var/www/DOMAIN/html/`
