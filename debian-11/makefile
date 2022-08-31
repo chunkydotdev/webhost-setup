@@ -1,4 +1,4 @@
-all: create_user install_nginx setup_firewall setup_website setup_cert end
+all: install_nginx setup_firewall setup_website setup_cert end
 
 create_user:
 	adduser dev
