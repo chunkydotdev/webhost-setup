@@ -1,9 +1,5 @@
 
 create_user:
-	adduser dev
-	usermod -aG sudo dev
-	getent group sudo
-	mkdir /home/dev
 	cp -rf ~/.ssh /home/dev
 	chown -R dev:dev /home/dev/.ssh
 
