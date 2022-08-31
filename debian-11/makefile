@@ -14,13 +14,12 @@ setup_firewall:
 	sudo systemctl enable nginx
 
 setup_website:
-	read -p "Enter domain without http/https: " domain; \
-	sudo mkdir -p /var/www/$$domain/html; \
-	sudo chown -R ${USER}:${USER} /var/www/$$domain/html; \
-	sudo chmod -R 755 /var/www/$$domain; \
-	sudo cp domain.conf /etc/nginx/sites-available/$$domain; \
-	sudo sed -i "s/domain/$$domain/g" /etc/nginx/sites-available/$$domain; \
-	sudo ln -s /etc/nginx/sites-available/$$domain /etc/nginx/sites-enabled/;
+	sudo mkdir -p /var/www/$(domain)/html; \
+	sudo chown -R ${USER}:${USER} /var/www/$(domain)/html; \
+	sudo chmod -R 755 /var/www/$(domain); \
+	sudo cp domain.conf /etc/nginx/sites-available/$(domain); \
+	sudo sed -i "s/domain/$(domain)/g" /etc/nginx/sites-available/$(domain); \
+	sudo ln -s /etc/nginx/sites-available/$(domain) /etc/nginx/sites-enabled/;
 	sudo cp nginx.conf /etc/nginx/nginx.conf
 	sudo nginx -t
 	sudo systemctl restart nginx
