@@ -1,4 +1,11 @@
-all: install_nginx setup_firewall setup_website setup_cert end
+all: install_nginx setup_firewall
+
+create_user:
+	adduser dev
+	usermod -aG sudo dev
+	getent group sudo
+	cp -rf ~/.ssh /home/dev
+	chown -R dev:dev /home/dev/.ssh
 
 install_nginx:
 	sudo apt update 
@@ -29,4 +36,4 @@ setup_cert:
 	sudo snap install core
 	sudo snap install --classic certbot
 	sudo ln -s /snap/bin/certbot /usr/bin/certbot
-	echo "Y" | sudo certbot --nginx --register-unsafely-without-email -d $(domain),www.$(domain)
+	echo "Y" | sudo certbot --nginx --register-unsafely-without-email -d $(domain)
