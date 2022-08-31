@@ -1,5 +1,9 @@
+all: create_user install_nginx setup_firewall setup_website setup_cert end
 
 create_user:
+	adduser dev
+	usermod -aG sudo dev
+	getent group sudo
 	cp -rf ~/.ssh /home/dev
 	chown -R dev:dev /home/dev/.ssh
 
@@ -17,13 +21,13 @@ setup_firewall:
 	sudo systemctl enable nginx
 
 setup_website:
-	@read -p "Enter domain (without http/https)" domain; \
+	@read -p "Enter domain without http/https: " domain; \
 	sudo mkdir -p /var/www/$$domain/html; \
-	sudo chown -R $USER:$USER /var/www/$$domain/html; \
+	sudo chown -R ${USER}:${USER} /var/www/$$domain/html; \
 	sudo chmod -R 755 /var/www/$$domain; \
 	cp domain.conf /etc/nginx/sites-available/$$domain; \
-	sed -i 's/\{domain\}/$$domain/g' /etc/nginx/sites-available/$$domain; \
-	sudo ln -s /etc/nginx/sites-available/$$domain /etc/nginx/sites-enabled/; \
+	sed -i "s/domain/$$domain/g" /etc/nginx/sites-available/$$domain; \
+	sudo ln -s /etc/nginx/sites-available/$$domain /etc/nginx/sites-enabled/;
 	sudo cp nginx.conf /etc/nginx/nginx.conf
 	sudo nginx -t
 	sudo systemctl restart nginx
