@@ -25,10 +25,10 @@ setup_website:
 	sudo mkdir -p /var/www/$$domain/html; \
 	sudo chown -R $USER:$USER /var/www/$$domain/html; \
 	sudo chmod -R 755 /var/www/$$domain; \
-	cp ~/.webhost-server-setup/domain.conf /etc/nginx/sites-available/$$domain; \
+	cp domain.conf /etc/nginx/sites-available/$$domain; \
 	sed -i 's/\{domain\}/$$domain/g' /etc/nginx/sites-available/$$domain; \
 	sudo ln -s /etc/nginx/sites-available/$$domain /etc/nginx/sites-enabled/; \
-	sudo cp ~/.webhost-server-setup/nginx.conf /etc/nginx/nginx.conf
+	sudo cp nginx.conf /etc/nginx/nginx.conf
 	sudo nginx -t
 	sudo systemctl restart nginx
 
@@ -38,3 +38,7 @@ setup_cert:
 	sudo snap install --classic certbot -y
 	sudo ln -s /snap/bin/certbot /usr/bin/certbot
 	sudo certbot --nginx --register-unsafely-without-email
+
+end:
+	echo "Your ssh capabilities have been copied to user 'dev'"
+	echo "For further changes, sign out of $USER and sign in with 'dev'"
