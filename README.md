@@ -17,12 +17,14 @@ curl -s -L https://raw.githubusercontent.com/Storken/webhost-setup/main/create-u
 You'll be prompted for a password and user info.
 
 ### Set up nginx
+Install nginx and set up firewall
 ```sh
 curl -s -L https://raw.githubusercontent.com/Storken/webhost-setup/main/install.sh -o install.sh && bash install.sh && rm install.sh
 ```
 
 
 ### Add a domain
+Create nginx configurations for a new domain and create a directory to add html and other website files.
 ```sh
 curl -s -L https://raw.githubusercontent.com/Storken/webhost-setup/main/add-domain.sh -o add-domain.sh && bash add-domain.sh && rm add-domain.sh
 ```
