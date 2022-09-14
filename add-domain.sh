@@ -3,6 +3,7 @@
 
 IP=$(hostname -I | cut -d' ' -f1)
 echo "Make sure you've pointed an A Record with Host '@' and value $IP"
+cd ~/.wbh
 
 read -p "Enter a domain (for example 'example.com'): " DOMAIN
 
