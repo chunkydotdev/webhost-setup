@@ -1,18 +1,6 @@
 all: install_nginx setup_firewall
 
-create_user:
-	adduser dev
-	usermod -aG sudo dev
-	getent group sudo
-	cp -rf ~/.ssh /home/dev
-	chown -R dev:dev /home/dev/.ssh
-
-install_nginx:
-	sudo apt update 
-	sudo apt install nginx -y
-
-setup_firewall:
-	sudo apt install ufw -y
+install_hosting:
 	sudo ufw app list
 	sudo ufw allow 'Nginx FULL'
 	sudo ufw allow 'OpenSSH'
@@ -20,7 +8,7 @@ setup_firewall:
 	sudo systemctl start nginx
 	sudo systemctl enable nginx
 
-setup_website:
+add_domain:
 	sudo mkdir -p /var/www/$(domain)/html; \
 	sudo chown -R ${USER}:${USER} /var/www/$(domain)/html; \
 	sudo chmod -R 755 /var/www/$(domain); \
@@ -31,7 +19,7 @@ setup_website:
 	sudo nginx -t
 	sudo systemctl restart nginx
 
-setup_cert:
+add_domain_cert:
 	sudo apt install snapd -y
 	sudo snap install core
 	sudo snap install --classic certbot

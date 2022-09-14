@@ -3,11 +3,17 @@
 
 echo "updating apt"
 sudo apt update
-sudo apt install subversion make -y
+sudo apt upgrade -y
+sudo apt install subversion make ufw nginx -y
 
-echo "downloading webhost repo..."
-svn export https://github.com/Storken/webhost-setup.git/trunk/debian-11
-cd debian-11
+echo "packages are updated"
+read -p "do you want to set up a dev user? (y/n) " 
+if [[ $REPLY -eq "y" ]]
+then 
+	adduser dev
+	usermod -aG sudo dev
+	getent group sudo
+	cp -rf ~/.ssh /home/dev
+	chown -R dev:dev /home/dev/.ssh
+fi
 echo "done"
-echo "starting make script"
-make install_nginx setup_firewall 

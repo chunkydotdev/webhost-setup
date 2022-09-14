@@ -10,16 +10,16 @@ For a new server go through the following steps:
 
 
 ### Create a dev user
-To create user:
+Start with:
 ```sh
-curl -s -L https://raw.githubusercontent.com/Storken/webhost-setup/main/create-user.sh -o create-user.sh && bash create-user.sh && rm create-user.sh
+curl -s -L https://raw.githubusercontent.com/Storken/webhost-setup/main/install.sh -o install.sh && bash install.sh && rm install.sh
 ```
-You'll be prompted for a password and user info.
+This will ask if you want to create a user and then you'll be prompted for a password and user info.
 
 ### Set up nginx
 Install nginx and set up firewall
 ```sh
-curl -s -L https://raw.githubusercontent.com/Storken/webhost-setup/main/install.sh -o install.sh && bash install.sh && rm install.sh
+curl -s -L https://raw.githubusercontent.com/Storken/webhost-setup/main/install-nginx.sh -o install-nginx.sh && bash install-nginx.sh && rm install-nginx.sh
 ```
 
 
