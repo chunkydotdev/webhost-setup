@@ -11,11 +11,11 @@ echo "packages are updated"
 read -p "do you want to set up a dev user? (y/n) " 
 if [[ $REPLY -eq "y" ]]
 then 
-	adduser dev
-	usermod -aG sudo dev
-	getent group sudo
-	gpasswd -a dev developers
-	cp -rf ~/.ssh /home/dev
+	sudo adduser dev
+	sudo usermod -aG sudo dev
+	sudo getent group sudo
+	sudo gpasswd -a dev developers
+	sudo cp -rf ~/.ssh /home/dev
 	sudo chown -R dev:dev /home/dev/.ssh
 	sudo chown -R dev:developers /var/www/
 	sudo chmod -R g+w /var/www/
@@ -24,9 +24,9 @@ fi
 read -p "do you want to set up a git ci user? (y/n) " 
 if [[ $REPLY -eq "y" ]]
 then 
-	adduser gitci
-	gpasswd -a gitci developers
-	cp -rf ~/.ssh /home/dev
+	sudo adduser gitci
+	sudo gpasswd -a gitci developers
+	sudo cp -rf ~/.ssh /home/dev
 	sudo chown -R gitci:developers /home/dev/.ssh	
 	sudo chown -R gitci:developers /var/www/
 	sudo chmod -R g+w /var/www/
