@@ -26,7 +26,7 @@ if [[ $REPLY -eq "y" ]]
 then 
 	sudo adduser gitci
 	sudo gpasswd -a gitci developers
-	sudo cp -rf ~/.ssh /home/dev
+	sudo cp -rf ~/.ssh /home/gitci
 	sudo chown -R gitci:developers /home/dev/.ssh	
 	sudo chown -R gitci:developers /var/www/
 	sudo chmod -R g+w /var/www/
