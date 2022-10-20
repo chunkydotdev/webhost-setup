@@ -10,7 +10,7 @@ read -p "Enter a domain (for example 'example.com'): " DOMAIN
 read -p "Do you want to set up domain hosting (you can skip to just set up a certificate)? (y/n) " 
 if [[ $REPLY -eq "y" ]]
 then 
-    make add_domain_cert domain=$DOMAIN
+    make add_domain domain=$DOMAIN
 fi
 echo "done"
 
